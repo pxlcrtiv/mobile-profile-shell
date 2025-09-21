@@ -155,11 +155,14 @@
   }
 
   /* iOS-style minimal status bar that doesn't interfere with Dynamic Island */
+  /* iOS-style minimal status bar that matches iOS 26 design */
   .status-bar {
-    @apply fixed top-0 left-0 right-0 z-10 flex items-center justify-between px-4;
+    @apply fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-5 h-8;
     background: transparent;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid hsl(var(--border) / 0.1);
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
   }
 
   .app-grid {
