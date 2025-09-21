@@ -39,7 +39,7 @@ A modern, interactive portfolio website designed as a mobile phone interface, sh
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/[your-username]/mobile-profile-shell.git
+   git clone https://github.com/pxlcrtiv/mobile-profile-shell.git
    cd mobile-profile-shell
    ```
 
