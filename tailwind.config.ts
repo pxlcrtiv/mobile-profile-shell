@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -38,6 +39,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          glow: "hsl(var(--accent-glow))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -57,6 +59,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Mobile OS Colors
+        warning: "hsl(var(--warning))",
+        success: "hsl(var(--success))",
+        "app-background": "hsl(var(--app-background))",
+        "status-bar": "hsl(var(--status-bar))",
+        "dock-background": "hsl(var(--dock-background))",
+        "glass-effect": "hsl(var(--glass-effect))",
+      },
+      backgroundImage: {
+        "gradient-primary": "var(--gradient-primary)",
+        "gradient-accent": "var(--gradient-accent)",
+        "gradient-background": "var(--gradient-background)",
+        "gradient-glass": "var(--gradient-glass)",
       },
       borderRadius: {
         lg: "var(--radius)",
