@@ -1,73 +1,149 @@
-# Welcome to your Lovable project
+# Mobile Profile Shell: Interactive Portfolio Website
 
-## Project info
+<div align="center">
+  <img src="public/placeholder.svg" alt="Mobile Profile Shell Preview" width="300">
+</div>
 
-**URL**: https://lovable.dev/projects/d488db92-f06c-4962-ac11-d105e650358b
+## Overview
 
-## How can I edit this code?
+A modern, interactive portfolio website designed as a mobile phone interface, showcasing Iheoma Nkwo's professional profile, projects, skills, and contact information in an engaging, app-based format. This responsive web application provides an immersive user experience that mimics the feel of navigating a mobile device.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- **Mobile-Inspired Interface**: Interactive home screen with app icons and realistic animations
+- **About Me App**: Personal profile, bio, social links, and GitHub stats
+- **Projects App**: Showcases 4 featured projects with descriptions, technologies, and links
+- **Skills App**: Visual representation of technical skills organized by category
+- **Contact App**: Easy way to get in touch
+- **Responsive Design**: Works seamlessly on all device sizes
+- **Modern UI**: Beautiful gradients, animations, and transitions
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d488db92-f06c-4962-ac11-d105e650358b) and start prompting.
+## Technology Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend Framework**: React 18
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS with shadcn-ui components
+- **Routing**: React Router
+- **State Management**: React Query
+- **Icons**: Lucide React
+- **Additional Libraries**: clsx, tailwind-merge, sonner
 
-**Use your preferred IDE**
+## Quick Start
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
+- Node.js (v16 or later)
+- npm, yarn, or bun
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. Clone the repository
+   ```sh
+   git clone https://github.com/[your-username]/mobile-profile-shell.git
+   cd mobile-profile-shell
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. Install dependencies
+   ```sh
+   npm install
+   # or
+   yarn install
+   # or
+   bun install
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. Start the development server
+   ```sh
+   npm run dev
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+4. Open your browser and visit `http://localhost:5173` to see the application
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## Project Structure
+
+```
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── apps/           # Portfolio section apps
+│   │   ├── ui/             # shadcn-ui components
+│   │   ├── AppIcon.tsx     # App icon component
+│   │   ├── MobileScreen.tsx # Mobile screen container
+│   │   └── StatusBar.tsx   # Status bar component
+│   ├── pages/              # Page components
+│   │   ├── Index.tsx       # Home page with app grid
+│   │   └── NotFound.tsx    # 404 page
+│   ├── assets/             # Static assets
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   ├── App.tsx             # Main application component
+│   └── main.tsx            # Entry point
+├── public/                 # Public assets
+├── package.json            # Project dependencies and scripts
+├── tailwind.config.ts      # Tailwind CSS configuration
+└── vite.config.ts          # Vite configuration
 ```
 
-**Edit a file directly in GitHub**
+## Available Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev`: Starts the development server
+- `npm run build`: Builds the application for production
+- `npm run build:dev`: Builds the application for development
+- `npm run lint`: Runs ESLint to check for code issues
+- `npm run preview`: Previews the production build
 
-**Use GitHub Codespaces**
+## Portfolio Content
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### About Section
+- Professional profile with bio
+- Personal information and location
+- Links to external websites
+- Social media connections (GitHub, Twitter, LinkedIn)
+- GitHub statistics
 
-## What technologies are used for this project?
+### Projects Section
+1. **Panorama Streetviewer**: Interactive panoramic imagery exploration application
+2. **Adiva**: AI-powered advertising creation platform using Google's Gemini AI
+3. **Sonic Dreamscape Orchestrator**: Professional-grade application for generating healing frequencies
+4. **Activepieces**: AI Agents & Workflow Automation platform
 
-This project is built with:
+### Skills Section
+- Frontend Development (JavaScript, React, Next.js, TypeScript, Vue.js)
+- Backend & Tools (Python, Node.js, PHP, Rust, Java)
+- Design & UI (UI/UX Design, Figma, Adobe Creative Suite, CSS/Tailwind)
+- AI & Innovation (AI Tools Integration, Machine Learning, Automation, Wellness Tech)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Customization
 
-## How can I deploy this project?
+To update the portfolio content:
+1. Modify the `AboutApp.tsx`, `ProjectsApp.tsx`, and `SkillsApp.tsx` files in the `components/apps/` directory
+2. Update the profile avatar in the `assets/` directory
+3. Adjust animations and styles in the respective component files
 
-Simply open [Lovable](https://lovable.dev/projects/d488db92-f06c-4962-ac11-d105e650358b) and click on Share -> Publish.
+## Deployment
 
-## Can I connect a custom domain to my Lovable project?
+### Vercel
+The easiest way to deploy this portfolio is to use the [Vercel Platform](https://vercel.com/import) from the creators of Next.js.
 
-Yes, you can!
+### Netlify
+Alternatively, you can deploy to Netlify by connecting your GitHub repository.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Visit [Netlify](https://www.netlify.com/)
+2. Click "New site from Git"
+3. Select your repository
+4. Configure your build settings (use `npm run build` as the build command)
+5. Click "Deploy site"
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## License
+This project is open source and available under the [MIT License](LICENSE).
+
+## Acknowledgements
+- Built with React and TypeScript
+- Styled with Tailwind CSS and shadcn-ui
+- Icons from Lucide React
+- Animations powered by CSS transitions and animations
+
+---
+
+<p align="center">
+  Designed with 💜 by Iheoma Nkwo
+</p>
