@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import React from 'react';
 import { StatusBar } from './StatusBar';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MobileScreenProps {
-  children: ReactNode;
+  children: React.ReactNode;
   title?: string;
   onBack?: () => void;
   className?: string;
@@ -12,7 +12,7 @@ interface MobileScreenProps {
 
 export const MobileScreen = ({ children, title, onBack, className }: MobileScreenProps) => {
   return (
-    <div className={cn("fixed inset-0 bg-app-background slide-up", className)}>
+    <div className={cn("fixed inset-0 bg-app-background slide-up flex flex-col", className)}>
       <StatusBar />
       
       {title && (
