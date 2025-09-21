@@ -154,9 +154,10 @@
     transform: scale(0.95);
   }
 
+  /* iOS-style minimal status bar that doesn't interfere with Dynamic Island */
   .status-bar {
-    @apply fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-2;
-    background: hsl(var(--status-bar) / 0.9);
+    @apply fixed top-0 left-0 right-0 z-10 flex items-center justify-between px-4;
+    background: transparent;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid hsl(var(--border) / 0.1);
   }
@@ -179,17 +180,18 @@
     transform: translateY(0);
   }
 
-  /* Dynamic Island */
+  /* Dynamic Island - iOS 26 style with better visibility */
   .dynamic-island {
     @apply fixed top-2 left-1/2 transform -translate-x-1/2 bg-foreground/10 backdrop-blur-xl;
     border-radius: 20px;
     padding: 8px 16px;
-    min-width: 120px;
+    min-width: 132px;
     height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid hsl(var(--border) / 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 
   /* Animations */

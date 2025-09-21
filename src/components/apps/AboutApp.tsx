@@ -20,8 +20,9 @@ export const AboutApp = ({ onBack }: AboutAppProps) => {
           />
           <h2 className="text-xl font-bold text-white mb-2">Iheoma Nkwo</h2>
           <p className="text-white/90 mb-4">@pxlcrtiv</p>
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 text-white text-sm">
-            🤒 Out sick
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-success/30 text-white text-sm">
+            <span className="w-2 h-2 rounded-full bg-success mr-1.5"></span>
+            Online
           </div>
         </Card>
 

@@ -30,7 +30,8 @@ export const MobileScreen = ({ children, title, onBack, className }: MobileScree
         </div>
       )}
       
-      <div className="flex-1 overflow-auto p-6">
+      {/* Make content area fully scrollable with proper padding */}
+      <div className="flex-1 overflow-y-auto p-6 pb-20">
         {children}
       </div>
     </div>

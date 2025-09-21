@@ -209,8 +209,9 @@ const Index = () => {
           </div>
           <h1 className="text-2xl font-bold mb-2">Iheoma Nkwo</h1>
           <p className="text-muted-foreground text-sm">Wellness & Mindful Tech Person</p>
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-muted/50 text-muted-foreground text-xs mt-2">
-            🤒 Out sick
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-success/20 text-success text-xs mt-2">
+            <span className="w-2 h-2 rounded-full bg-success mr-1.5"></span>
+            Online
           </div>
         </div>
 
