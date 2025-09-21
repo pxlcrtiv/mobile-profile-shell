@@ -1,30 +1,56 @@
 import { useState } from 'react';
 import { StatusBar } from '@/components/StatusBar';
+import { DynamicIsland } from '@/components/DynamicIsland';
 import { AppIcon } from '@/components/AppIcon';
 import { AboutApp } from '@/components/apps/AboutApp';
 import { ProjectsApp } from '@/components/apps/ProjectsApp';
 import { SkillsApp } from '@/components/apps/SkillsApp';
 import { ContactApp } from '@/components/apps/ContactApp';
-import { User, FolderOpen, Code, Mail, Github, Twitter, Linkedin, Settings } from 'lucide-react';
+import { CalculatorApp } from '@/components/apps/CalculatorApp';
+import { ClockApp } from '@/components/apps/ClockApp';
+import { WeatherApp } from '@/components/apps/WeatherApp';
+import { SnakeGameApp } from '@/components/apps/SnakeGameApp';
+import { TicTacToeApp } from '@/components/apps/TicTacToeApp';
+import { SettingsApp } from '@/components/apps/SettingsApp';
+import { PhotosApp } from '@/components/apps/PhotosApp';
+import { 
+  User, 
+  FolderOpen, 
+  Code, 
+  Mail, 
+  Github, 
+  Twitter, 
+  Linkedin, 
+  Settings, 
+  Calculator,
+  Clock,
+  CloudSun,
+  Gamepad2,
+  Image,
+  Music,
+  MessageCircle,
+  Camera
+} from 'lucide-react';
 
-type AppType = 'home' | 'about' | 'projects' | 'skills' | 'contact';
+type AppType = 'home' | 'about' | 'projects' | 'skills' | 'contact' | 'calculator' | 'clock' | 'weather' | 'snake' | 'tictactoe' | 'settings' | 'photos';
 
 const Index = () => {
   const [currentApp, setCurrentApp] = useState<AppType>('home');
 
   const apps = [
+    // Core Portfolio Apps
     {
       id: 'about',
       label: 'About Me',
       icon: User,
-      color: 'bg-gradient-primary',
+      color: 'bg-gradient-to-br from-blue-500 to-blue-600',
       onClick: () => setCurrentApp('about')
     },
     {
       id: 'projects',
       label: 'Projects',
       icon: FolderOpen,
-      color: 'bg-gradient-accent',
+      color: 'bg-gradient-to-br from-purple-500 to-purple-600',
       onClick: () => setCurrentApp('projects'),
       badge: 4
     },
@@ -32,43 +58,107 @@ const Index = () => {
       id: 'skills',
       label: 'Skills',
       icon: Code,
-      color: 'bg-gradient-to-br from-warning to-warning/70',
+      color: 'bg-gradient-to-br from-green-500 to-green-600',
       onClick: () => setCurrentApp('skills')
     },
     {
       id: 'contact',
       label: 'Contact',
       icon: Mail,
-      color: 'bg-gradient-to-br from-success to-success/70',
+      color: 'bg-gradient-to-br from-red-500 to-red-600',
       onClick: () => setCurrentApp('contact')
+    },
+    
+    // iOS Native Apps
+    {
+      id: 'calculator',
+      label: 'Calculator',
+      icon: Calculator,
+      color: 'bg-gradient-to-br from-gray-700 to-gray-800',
+      onClick: () => setCurrentApp('calculator')
+    },
+    {
+      id: 'clock',
+      label: 'Clock',
+      icon: Clock,
+      color: 'bg-gradient-to-br from-gray-900 to-black',
+      onClick: () => setCurrentApp('clock')
+    },
+    {
+      id: 'weather',
+      label: 'Weather',
+      icon: CloudSun,
+      color: 'bg-gradient-to-br from-blue-400 to-blue-500',
+      onClick: () => setCurrentApp('weather')
+    },
+    {
+      id: 'photos',
+      label: 'Photos',
+      icon: Image,
+      color: 'bg-gradient-to-br from-yellow-400 to-orange-500',
+      onClick: () => setCurrentApp('photos')
+    },
+    
+    // Games
+    {
+      id: 'snake',
+      label: 'Snake',
+      icon: Gamepad2,
+      color: 'bg-gradient-to-br from-green-400 to-green-500',
+      onClick: () => setCurrentApp('snake')
+    },
+    {
+      id: 'tictactoe',
+      label: 'Tic Tac Toe',
+      icon: Gamepad2,
+      color: 'bg-gradient-to-br from-indigo-500 to-indigo-600',
+      onClick: () => setCurrentApp('tictactoe')
+    },
+    
+    // Settings & Social
+    {
+      id: 'settings',
+      label: 'Settings',
+      icon: Settings,
+      color: 'bg-gradient-to-br from-gray-600 to-gray-700',
+      onClick: () => setCurrentApp('settings')
     },
     {
       id: 'github',
       label: 'GitHub',
       icon: Github,
-      color: 'bg-gradient-to-br from-secondary to-muted',
+      color: 'bg-gradient-to-br from-gray-800 to-black',
       onClick: () => window.open('https://github.com/pxlcrtiv', '_blank')
     },
     {
       id: 'twitter',
       label: 'Twitter',
       icon: Twitter,
-      color: 'bg-gradient-to-br from-blue-500 to-blue-600',
+      color: 'bg-gradient-to-br from-sky-400 to-sky-500',
       onClick: () => window.open('https://twitter.com/emmankwoh', '_blank')
     },
     {
       id: 'linkedin',
       label: 'LinkedIn',
       icon: Linkedin,
-      color: 'bg-gradient-to-br from-blue-700 to-blue-800',
+      color: 'bg-gradient-to-br from-blue-600 to-blue-700',
       onClick: () => window.open('https://www.linkedin.com/in/emma-en', '_blank')
     },
+    
+    // Additional Native Apps (placeholders)
     {
-      id: 'settings',
-      label: 'Settings',
-      icon: Settings,
-      color: 'bg-gradient-to-br from-muted to-border',
-      onClick: () => console.log('Settings clicked')
+      id: 'music',
+      label: 'Music',
+      icon: Music,
+      color: 'bg-gradient-to-br from-pink-500 to-rose-500',
+      onClick: () => {}
+    },
+    {
+      id: 'messages',
+      label: 'Messages',
+      icon: MessageCircle,
+      color: 'bg-gradient-to-br from-green-500 to-green-600',
+      onClick: () => {}
     }
   ];
 
@@ -82,6 +172,20 @@ const Index = () => {
         return <SkillsApp onBack={() => setCurrentApp('home')} />;
       case 'contact':
         return <ContactApp onBack={() => setCurrentApp('home')} />;
+      case 'calculator':
+        return <CalculatorApp onBack={() => setCurrentApp('home')} />;
+      case 'clock':
+        return <ClockApp onBack={() => setCurrentApp('home')} />;
+      case 'weather':
+        return <WeatherApp onBack={() => setCurrentApp('home')} />;
+      case 'snake':
+        return <SnakeGameApp onBack={() => setCurrentApp('home')} />;
+      case 'tictactoe':
+        return <TicTacToeApp onBack={() => setCurrentApp('home')} />;
+      case 'settings':
+        return <SettingsApp onBack={() => setCurrentApp('home')} />;
+      case 'photos':
+        return <PhotosApp onBack={() => setCurrentApp('home')} />;
       default:
         return null;
     }
@@ -94,9 +198,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       <StatusBar />
+      <DynamicIsland />
       
       {/* Home Screen */}
-      <div className="pt-16 pb-8 min-h-screen flex flex-col">
+      <div className="pt-20 pb-8 min-h-screen flex flex-col">
         {/* Header */}
         <div className="text-center py-8 px-6">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-primary mb-4 bounce-in">
@@ -111,7 +216,7 @@ const Index = () => {
 
         {/* App Grid */}
         <div className="flex-1 px-6">
-          <div className="app-grid max-w-md mx-auto">
+          <div className="app-grid max-w-sm mx-auto">
             {apps.map((app, index) => (
               <div 
                 key={app.id} 

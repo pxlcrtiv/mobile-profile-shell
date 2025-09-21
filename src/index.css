@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Mobile OS Portfolio Design System - Deep Space Theme */
+/* iOS 26 Design System - Modern Glass Morphism */
 
 @layer base {
   :root {
-    /* Core Background System */
-    --background: 240 8% 8%;
+    /* Core Background System - iOS 26 Style */
+    --background: 220 25% 6%;
     --foreground: 0 0% 98%;
 
     /* Card System */
@@ -18,10 +18,10 @@
     --popover: 240 8% 10%;
     --popover-foreground: 0 0% 98%;
 
-    /* Primary Brand Colors */
-    --primary: 270 95% 65%;
+    /* Primary Brand Colors - iOS 26 Blue */
+    --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 270 100% 80%;
+    --primary-glow: 210 100% 70%;
 
     /* Secondary Colors */
     --secondary: 240 8% 18%;
@@ -47,11 +47,19 @@
     --input: 240 8% 15%;
     --ring: 270 95% 65%;
 
-    /* Mobile OS Specific */
-    --app-background: 240 8% 12%;
-    --status-bar: 240 8% 6%;
-    --dock-background: 240 8% 10%;
-    --glass-effect: 240 8% 15%;
+    /* iOS 26 Specific */
+    --app-background: 220 25% 8%;
+    --status-bar: 220 25% 4%;
+    --dock-background: 220 25% 6%;
+    --glass-effect: 220 25% 15%;
+    --ios-blue: 210 100% 50%;
+    --ios-red: 0 85% 55%;
+    --ios-green: 142 76% 36%;
+    --ios-orange: 28 100% 50%;
+    --ios-purple: 280 100% 65%;
+    --ios-pink: 322 100% 65%;
+    --ios-yellow: 48 100% 50%;
+    --ios-teal: 174 100% 40%;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
@@ -121,16 +129,20 @@
   body {
     @apply bg-background text-foreground overflow-hidden;
     background: var(--gradient-background);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Mobile OS Specific Styles */
+  /* iOS 26 App Icon Styles */
   .app-icon {
-    @apply relative flex items-center justify-center rounded-3xl transition-all duration-300;
+    @apply relative flex items-center justify-center transition-all duration-300;
+    border-radius: 22px;
     background: var(--gradient-glass);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--border) / 0.2);
-    box-shadow: var(--shadow-glass);
+    backdrop-filter: blur(30px);
+    border: 1px solid hsl(var(--border) / 0.1);
+    box-shadow: 0 4px 20px hsl(var(--background) / 0.8), 
+                0 0 0 1px hsl(var(--foreground) / 0.05);
   }
 
   .app-icon:hover {
@@ -150,7 +162,34 @@
   }
 
   .app-grid {
-    @apply grid grid-cols-4 gap-6 p-8;
+    @apply grid grid-cols-4 gap-4 p-6;
+  }
+
+  /* iOS 26 Control Center */
+  .control-center {
+    @apply fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-xl;
+    border-top: 1px solid hsl(var(--border) / 0.2);
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    transform: translateY(100%);
+    transition: transform 0.3s var(--spring-bounce);
+  }
+
+  .control-center.open {
+    transform: translateY(0);
+  }
+
+  /* Dynamic Island */
+  .dynamic-island {
+    @apply fixed top-2 left-1/2 transform -translate-x-1/2 bg-foreground/10 backdrop-blur-xl;
+    border-radius: 20px;
+    padding: 8px 16px;
+    min-width: 120px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid hsl(var(--border) / 0.2);
   }
 
   /* Animations */
