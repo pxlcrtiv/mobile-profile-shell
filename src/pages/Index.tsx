@@ -6,6 +6,7 @@ import { AboutApp } from '@/components/apps/AboutApp';
 import { ProjectsApp } from '@/components/apps/ProjectsApp';
 import { SkillsApp } from '@/components/apps/SkillsApp';
 import { ContactApp } from '@/components/apps/ContactApp';
+import { GitHubApp } from '@/components/apps/GitHubApp';
 import { CalculatorApp } from '@/components/apps/CalculatorApp';
 import { ClockApp } from '@/components/apps/ClockApp';
 import { WeatherApp } from '@/components/apps/WeatherApp';
@@ -32,20 +33,27 @@ import {
   Camera
 } from 'lucide-react';
 
-type AppType = 'home' | 'about' | 'projects' | 'skills' | 'contact' | 'calculator' | 'clock' | 'weather' | 'snake' | 'tictactoe' | 'settings' | 'photos';
+type AppType = 'home' | 'about' | 'projects' | 'skills' | 'contact' | 'github' | 'calculator' | 'clock' | 'weather' | 'snake' | 'tictactoe' | 'settings' | 'photos';
 
 const Index = () => {
   const [currentApp, setCurrentApp] = useState<AppType>('home');
 
   const apps = [
     // Core Portfolio Apps
-    {
-      id: 'about',
-      label: 'About Me',
-      icon: User,
-      color: 'bg-gradient-to-br from-blue-500 to-blue-600',
-      onClick: () => setCurrentApp('about')
-    },
+  {
+    id: 'about',
+    label: 'About Me',
+    icon: User,
+    color: 'bg-gradient-to-br from-blue-500 to-blue-600',
+    onClick: () => setCurrentApp('about')
+  },
+  {
+    id: 'github',
+    label: 'GitHub',
+    icon: Github,
+    color: 'bg-gradient-to-br from-gray-700 to-gray-900',
+    onClick: () => setCurrentApp('github')
+  },
     {
       id: 'projects',
       label: 'Projects',
@@ -123,13 +131,7 @@ const Index = () => {
       color: 'bg-gradient-to-br from-gray-600 to-gray-700',
       onClick: () => setCurrentApp('settings')
     },
-    {
-      id: 'github',
-      label: 'GitHub',
-      icon: Github,
-      color: 'bg-gradient-to-br from-gray-800 to-black',
-      onClick: () => window.open('https://github.com/pxlcrtiv', '_blank')
-    },
+    
     {
       id: 'twitter',
       label: 'Twitter',
@@ -166,6 +168,8 @@ const Index = () => {
     switch (currentApp) {
       case 'about':
         return <AboutApp onBack={() => setCurrentApp('home')} />;
+      case 'github':
+        return <GitHubApp onBack={() => setCurrentApp('home')} />;
       case 'projects':
         return <ProjectsApp onBack={() => setCurrentApp('home')} />;
       case 'skills':
