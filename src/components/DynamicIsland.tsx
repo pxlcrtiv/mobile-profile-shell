@@ -1,28 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Battery, Wifi, Signal } from 'lucide-react';
+import { Battery, Wifi, Signal, BatteryCharging } from 'lucide-react';
+import { useBattery } from '@/hooks/use-battery';
 
 export const DynamicIsland = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [batteryPercentage, setBatteryPercentage] = useState<number>(Math.floor(Math.random() * 30) + 70); // Same range as StatusBar
+  const { level: batteryPercentage, charging } = useBattery();
 
   // Update time every second
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
-  }, []);
-
-  // Simulate battery percentage changes (synchronized with StatusBar)
-  useEffect(() => {
-    const batteryTimer = setInterval(() => {
-      setBatteryPercentage(prev => {
-        const change = Math.floor(Math.random() * 5) - 2; // Random between -2 and +2
-        const newPercentage = Math.max(0, Math.min(100, prev + change));
-        return newPercentage;
-      });
-    }, Math.floor(Math.random() * 30000) + 30000);
-
-    return () => clearInterval(batteryTimer);
   }, []);
 
   const formatTime = (date: Date) => {
@@ -44,10 +32,14 @@ export const DynamicIsland = () => {
   // iOS-style status info that will always be visible
   const renderStatusInfo = () => (
     <div className="absolute left-2 top-1 flex items-center space-x-1.5">
-      <Signal className="w-2.5 h-2.5 text-white/70" />
-      <Wifi className="w-2.5 h-2.5 text-white/70" />
-      <Battery className={`w-2.5 h-2.5 ${getBatteryColor()}`} />
-    </div>
+        <Signal className="w-2.5 h-2.5 text-white/70" />
+        <Wifi className="w-2.5 h-2.5 text-white/70" />
+        {charging ? (
+           <BatteryCharging className={`w-2.5 h-2.5 ${getBatteryColor()}`} />
+         ) : (
+           <Battery className={`w-2.5 h-2.5 ${getBatteryColor()}`} />
+         )}
+      </div>
   );
 
   return (

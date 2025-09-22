@@ -13,7 +13,9 @@ import { WeatherApp } from '@/components/apps/WeatherApp';
 import { SnakeGameApp } from '@/components/apps/SnakeGameApp';
 import { TicTacToeApp } from '@/components/apps/TicTacToeApp';
 import { SettingsApp } from '@/components/apps/SettingsApp';
-import { PhotosApp } from '@/components/apps/PhotosApp';
+import { QRCodeApp } from '@/components/apps/QRCodeApp';
+import { MusicApp } from '@/components/apps/MusicApp';
+import { MessagesApp } from '@/components/apps/MessagesApp';
 import { 
   User, 
   FolderOpen, 
@@ -33,10 +35,10 @@ import {
   Camera
 } from 'lucide-react';
 
-type AppType = 'home' | 'about' | 'projects' | 'skills' | 'contact' | 'github' | 'calculator' | 'clock' | 'weather' | 'snake' | 'tictactoe' | 'settings' | 'photos';
+type AppType = 'home' | 'about' | 'projects' | 'skills' | 'contact' | 'github' | 'calculator' | 'clock' | 'weather' | 'snake' | 'tictactoe' | 'settings' | 'photos' | 'music' | 'messages';
 
 const Index = () => {
-  const [currentApp, setCurrentApp] = useState<AppType>('home');
+  const [currentApp, setCurrentApp] = useState<AppType | 'music' | 'messages'>('home');
 
   const apps = [
     // Core Portfolio Apps
@@ -99,11 +101,11 @@ const Index = () => {
       color: 'bg-gradient-to-br from-blue-400 to-blue-500',
       onClick: () => setCurrentApp('weather')
     },
-    {
+    { 
       id: 'photos',
-      label: 'Photos',
-      icon: Image,
-      color: 'bg-gradient-to-br from-yellow-400 to-orange-500',
+      label: 'QR Code',
+      icon: Camera,
+      color: 'bg-gradient-to-br from-blue-400 to-indigo-500',
       onClick: () => setCurrentApp('photos')
     },
     
@@ -148,19 +150,19 @@ const Index = () => {
     },
     
     // Additional Native Apps (placeholders)
-    {
+    { 
       id: 'music',
       label: 'Music',
       icon: Music,
       color: 'bg-gradient-to-br from-pink-500 to-rose-500',
-      onClick: () => {}
+      onClick: () => setCurrentApp('music')
     },
-    {
+    { 
       id: 'messages',
       label: 'Messages',
       icon: MessageCircle,
       color: 'bg-gradient-to-br from-green-500 to-green-600',
-      onClick: () => {}
+      onClick: () => setCurrentApp('messages')
     }
   ];
 
@@ -189,7 +191,11 @@ const Index = () => {
       case 'settings':
         return <SettingsApp onBack={() => setCurrentApp('home')} />;
       case 'photos':
-        return <PhotosApp onBack={() => setCurrentApp('home')} />;
+        return <QRCodeApp onBack={() => setCurrentApp('home')} />;
+      case 'music':
+        return <MusicApp onBack={() => setCurrentApp('home')} />;
+      case 'messages':
+        return <MessagesApp onBack={() => setCurrentApp('home')} />;
       default:
         return null;
     }

@@ -1,34 +1,13 @@
 import { MobileScreen } from '../MobileScreen';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Mail, MessageCircle, Phone, MapPin, Send, ExternalLink } from 'lucide-react';
-import { useState } from 'react';
 
 interface ContactAppProps {
   onBack: () => void;
 }
 
 export const ContactApp = ({ onBack }: ContactAppProps) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-  };
 
   return (
     <MobileScreen title="Contact" onBack={onBack}>
@@ -64,44 +43,30 @@ export const ContactApp = ({ onBack }: ContactAppProps) => {
           </Card>
         </div>
 
-        {/* Contact Form */}
+        {/* Alternative Contact Methods */}
         <Card className="p-6 bg-card">
-          <h3 className="text-lg font-semibold mb-4">Send a Message</h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Input
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="bg-background/50"
-              />
-            </div>
-            <div>
-              <Input
-                name="email"
-                type="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="bg-background/50"
-              />
-            </div>
-            <div>
-              <Textarea
-                name="message"
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleInputChange}
-                rows={4}
-                className="bg-background/50 resize-none"
-              />
-            </div>
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-              <Send className="w-4 h-4 mr-2" />
-              Send Message
+          <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
+          <p className="text-muted-foreground mb-4">
+            Feel free to reach out through any of my social profiles or via email. I'm always open to new opportunities and collaborations!
+          </p>
+          <div className="grid grid-cols-2 gap-3">
+            <Button
+              variant="default"
+              className="w-full bg-primary hover:bg-primary/90"
+              onClick={() => window.location.href = 'mailto:eeddie456@gmail.com'}
+            >
+              <Mail className="w-4 h-4 mr-2" />
+              Email Me
             </Button>
-          </form>
+            <Button
+              variant="secondary"
+              className="w-full"
+              onClick={() => window.open('https://emmankwoh.framer.website', '_blank')}
+            >
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Visit Website
+            </Button>
+          </div>
         </Card>
 
         {/* Social Links */}

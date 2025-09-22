@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { MobileScreen } from '@/components/MobileScreen';
 import { 
   User, 
@@ -15,6 +15,7 @@ import {
   ToggleLeft,
   ToggleRight
 } from 'lucide-react';
+import { useBattery } from '@/hooks/use-battery';
 
 interface SettingsAppProps {
   onBack: () => void;
@@ -25,6 +26,7 @@ export const SettingsApp = ({ onBack }: SettingsAppProps) => {
   const [notifications, setNotifications] = useState(true);
   const [wifi, setWifi] = useState(true);
   const [bluetooth, setBluetooth] = useState(false);
+  const { level: batteryPercentage, charging } = useBattery();
 
   const SettingItem = ({ 
     icon: Icon, 
@@ -151,7 +153,7 @@ export const SettingsApp = ({ onBack }: SettingsAppProps) => {
         <SettingItem
           icon={Battery}
           title="Battery"
-          subtitle="87% - Good condition"
+          subtitle={`${batteryPercentage}% - ${charging ? 'Charging' : 'Good condition'}`}
         />
 
         {/* System Info */}
