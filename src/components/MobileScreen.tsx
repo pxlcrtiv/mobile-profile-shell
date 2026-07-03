@@ -12,7 +12,8 @@ interface MobileScreenProps {
 
 export const MobileScreen = ({ children, title, onBack, className }: MobileScreenProps) => {
   return (
-    <div className={cn("fixed inset-0 bg-app-background slide-up flex flex-col", className)}>
+    <div className={cn("fixed inset-0 bg-app-background aurora-wallpaper slide-up flex flex-col", className)}>
+      <div className="aurora-blob-3"></div>
       <StatusBar />
       
       {title && (
@@ -20,7 +21,7 @@ export const MobileScreen = ({ children, title, onBack, className }: MobileScree
           {onBack && (
             <button 
               onClick={onBack}
-              className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary/50 backdrop-blur-sm hover:bg-secondary/70 transition-colors"
+              className="flex items-center justify-center w-8 h-8 rounded-full glass-card hover:bg-secondary/70 transition-all duration-200 active:scale-90"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>

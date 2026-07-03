@@ -44,7 +44,7 @@ export const DynamicIsland = () => {
 
   return (
     <div 
-      className={`dynamic-island cursor-pointer transition-all duration-300 z-10 ${ // Lower z-index than status bar
+      className={`dynamic-island cursor-pointer transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] z-10 hover:shadow-glass-hover ${ // Spring transition
         isExpanded ? 'w-64 h-20' : 'w-36 h-9' 
       }`}
       onClick={() => setIsExpanded(!isExpanded)}

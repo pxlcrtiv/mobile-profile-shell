@@ -6,71 +6,71 @@
 
 @layer base {
   :root {
-    /* Core Background System - iOS 26 Style */
-    --background: 220 25% 6%;
+    /* Core Background System - Indigo Aurora */
+    --background: 230 30% 5%;
     --foreground: 0 0% 98%;
 
-    /* Card System */
-    --card: 240 8% 12%;
+    /* Card System - Glass tinted */
+    --card: 235 30% 10%;
     --card-foreground: 0 0% 95%;
 
     /* Popover System */
-    --popover: 240 8% 10%;
+    --popover: 235 30% 9%;
     --popover-foreground: 0 0% 98%;
 
-    /* Primary Brand Colors - iOS 26 Blue */
-    --primary: 210 100% 50%;
+    /* Primary Brand Colors - Indigo Violet */
+    --primary: 250 89% 67%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 210 100% 70%;
+    --primary-glow: 270 91% 65%;
 
     /* Secondary Colors */
-    --secondary: 240 8% 18%;
+    --secondary: 235 25% 16%;
     --secondary-foreground: 0 0% 90%;
 
     /* Muted Colors */
-    --muted: 240 8% 15%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 235 25% 13%;
+    --muted-foreground: 230 10% 55%;
 
-    /* Accent System */
-    --accent: 200 100% 70%;
-    --accent-foreground: 240 8% 8%;
-    --accent-glow: 200 100% 85%;
+    /* Accent System - Teal-Cyan */
+    --accent: 174 72% 56%;
+    --accent-foreground: 235 30% 8%;
+    --accent-glow: 174 80% 65%;
 
     /* Status Colors */
     --destructive: 0 85% 60%;
     --destructive-foreground: 0 0% 100%;
-    --success: 120 60% 50%;
-    --warning: 45 100% 60%;
+    --success: 142 72% 45%;
+    --warning: 40 95% 55%;
 
     /* Border & Input */
-    --border: 240 8% 20%;
-    --input: 240 8% 15%;
-    --ring: 270 95% 65%;
+    --border: 235 25% 18%;
+    --input: 235 25% 13%;
+    --ring: 250 89% 67%;
 
-    /* iOS 26 Specific */
-    --app-background: 220 25% 8%;
-    --status-bar: 220 25% 4%;
-    --dock-background: 220 25% 6%;
-    --glass-effect: 220 25% 15%;
-    --ios-blue: 210 100% 50%;
+    /* iOS 26 Specific - Indigo Tinted */
+    --app-background: 230 30% 7%;
+    --status-bar: 230 30% 3%;
+    --dock-background: 230 30% 6%;
+    --glass-effect: 235 30% 14%;
+    --ios-blue: 230 90% 60%;
     --ios-red: 0 85% 55%;
-    --ios-green: 142 76% 36%;
+    --ios-green: 142 72% 45%;
     --ios-orange: 28 100% 50%;
-    --ios-purple: 280 100% 65%;
+    --ios-purple: 270 91% 65%;
     --ios-pink: 322 100% 65%;
     --ios-yellow: 48 100% 50%;
-    --ios-teal: 174 100% 40%;
+    --ios-teal: 174 72% 56%;
 
-    /* Gradients */
+    /* Gradients - Aurora Palette */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
-    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(240 8% 5%));
-    --gradient-glass: linear-gradient(135deg, hsl(var(--glass-effect) / 0.8), hsl(var(--glass-effect) / 0.4));
+    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(235 30% 3%));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass-effect) / 0.6), hsl(var(--glass-effect) / 0.2));
 
-    /* Shadows */
-    --shadow-app: 0 10px 30px hsl(var(--primary) / 0.3);
-    --shadow-glass: 0 8px 32px hsl(240 8% 2% / 0.5);
-    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.4);
+    /* Shadows - Indigo Glow */
+    --shadow-app: 0 10px 30px hsl(var(--primary) / 0.25);
+    --shadow-glass: 0 8px 32px hsl(230 30% 2% / 0.6);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.35);
 
     /* Animations */
     --spring-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -79,19 +79,12 @@
     --radius: 1.25rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -241,6 +234,90 @@
     }
   }
 
+  @keyframes fade-in-up {
+    from {
+      transform: translateY(16px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.92);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes aurora-drift {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(60px, -40px) scale(1.2);
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes aurora-shift {
+    0%, 100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes dock-glow {
+    0%, 100% {
+      box-shadow: 0 4px 20px hsl(var(--primary) / 0.1);
+    }
+    50% {
+      box-shadow: 0 4px 30px hsl(var(--primary) / 0.25);
+    }
+  }
+
+  @keyframes status-shimmer {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+
   .app-launch {
     animation: app-launch 0.6s var(--spring-bounce) forwards;
   }
@@ -251,5 +328,72 @@
 
   .bounce-in {
     animation: bounce-in 0.6s var(--spring-bounce) forwards;
+  }
+
+  /* Aurora Wallpaper - Animated Gradient Background */
+  .aurora-wallpaper {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: hsl(230 30% 5%);
+  }
+
+  .aurora-wallpaper::before,
+  .aurora-wallpaper::after,
+  .aurora-wallpaper .aurora-blob-3 {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+    animation: aurora-drift 12s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  .aurora-wallpaper::before {
+    background: radial-gradient(circle, hsl(250 89% 67% / 0.5), transparent 70%);
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+  }
+
+  .aurora-wallpaper::after {
+    background: radial-gradient(circle, hsl(174 72% 56% / 0.4), transparent 70%);
+    bottom: -15%;
+    right: -10%;
+    animation-delay: -4s;
+  }
+
+  .aurora-wallpaper .aurora-blob-3 {
+    background: radial-gradient(circle, hsl(270 91% 65% / 0.35), transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -8s;
+  }
+
+  /* Glass Card Utility */
+  .glass-card {
+    background: hsl(var(--card) / 0.5);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid hsl(var(--foreground) / 0.08);
+    box-shadow: 0 8px 32px hsl(230 30% 2% / 0.5);
+  }
+
+  .tab-content {
+  opacity: 0;
+  animation: fade-in-up 0.35s var(--smooth-ease) forwards;
+}
+
+.glass-card-strong {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(30px) saturate(1.4);
+    -webkit-backdrop-filter: blur(30px) saturate(1.4);
+    border: 1px solid hsl(var(--foreground) / 0.12);
+    box-shadow: 0 8px 32px hsl(230 30% 2% / 0.6);
   }
 }

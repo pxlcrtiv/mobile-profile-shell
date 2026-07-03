@@ -150,7 +150,7 @@ export const MusicApp = ({ onBack }: MusicAppProps) => {
         </Card>
 
         {/* Currently Playing */}
-        <Card className="p-4 bg-card">
+        <Card className="p-4 glass-card">
           <h3 className="text-lg font-semibold mb-4">Now Playing</h3>
           {isLoading ? (
             <div className="flex items-center space-x-4">
@@ -256,7 +256,7 @@ export const MusicApp = ({ onBack }: MusicAppProps) => {
 
       {/* Mini Player (sticky at bottom) */}
       {!isLoading && (
-        <div className="sticky bottom-0 bg-card/95 backdrop-blur-sm border-t border-border p-3">
+        <div className="sticky bottom-0 glass-card/95 backdrop-blur-sm border-t border-border p-3">
           <div className="flex items-center space-x-3">
             <img 
               src={currentlyPlaying.albumArt} 

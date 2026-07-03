@@ -17,7 +17,7 @@ export const AppIcon = ({ icon: Icon, label, color, onClick, badge, className }:
       onClick={onClick}
     >
       <div className="relative">
-        <div className={`app-icon w-16 h-16 ${color}`}>
+        <div className={`app-icon w-16 h-16 ${color} transition-transform duration-200 active:scale-90`}>
           <Icon className="w-8 h-8 text-white" />
         </div>
         {badge && (

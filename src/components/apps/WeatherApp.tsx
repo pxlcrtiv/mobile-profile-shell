@@ -61,7 +61,7 @@ export const WeatherApp = ({ onBack }: WeatherAppProps) => {
         </div>
 
         {/* Hourly Forecast */}
-        <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+        <div className="glass-card rounded-2xl p-4 backdrop-blur-sm">
           <h3 className="text-sm font-medium mb-3 text-white/70">HOURLY FORECAST</h3>
           <div className="flex space-x-4 overflow-x-auto">
             {hourlyForecast.map((hour, index) => (
@@ -75,7 +75,7 @@ export const WeatherApp = ({ onBack }: WeatherAppProps) => {
         </div>
 
         {/* 7-Day Forecast */}
-        <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+        <div className="glass-card rounded-2xl p-4 backdrop-blur-sm">
           <h3 className="text-sm font-medium mb-3 text-white/70">7-DAY FORECAST</h3>
           <div className="space-y-3">
             {weeklyForecast.map((day, index) => (
@@ -95,7 +95,7 @@ export const WeatherApp = ({ onBack }: WeatherAppProps) => {
 
         {/* Weather Details */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+          <div className="glass-card rounded-2xl p-4 backdrop-blur-sm">
             <div className="flex items-center space-x-2 mb-2">
               <Droplets className="w-5 h-5 text-blue-400" />
               <span className="text-sm text-white/70">HUMIDITY</span>
@@ -103,7 +103,7 @@ export const WeatherApp = ({ onBack }: WeatherAppProps) => {
             <div className="text-2xl font-light">{currentWeather.humidity}%</div>
           </div>
           
-          <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+          <div className="glass-card rounded-2xl p-4 backdrop-blur-sm">
             <div className="flex items-center space-x-2 mb-2">
               <Wind className="w-5 h-5 text-green-400" />
               <span className="text-sm text-white/70">WIND</span>
@@ -111,7 +111,7 @@ export const WeatherApp = ({ onBack }: WeatherAppProps) => {
             <div className="text-2xl font-light">{currentWeather.windSpeed} mph</div>
           </div>
 
-          <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+          <div className="glass-card rounded-2xl p-4 backdrop-blur-sm">
             <div className="flex items-center space-x-2 mb-2">
               <Eye className="w-5 h-5 text-purple-400" />
               <span className="text-sm text-white/70">VISIBILITY</span>
@@ -119,7 +119,7 @@ export const WeatherApp = ({ onBack }: WeatherAppProps) => {
             <div className="text-2xl font-light">{currentWeather.visibility} mi</div>
           </div>
 
-          <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
+          <div className="glass-card rounded-2xl p-4 backdrop-blur-sm">
             <div className="flex items-center space-x-2 mb-2">
               <Sun className="w-5 h-5 text-orange-400" />
               <span className="text-sm text-white/70">UV INDEX</span>
