@@ -100,7 +100,7 @@ export const PomodoroApp = ({ onBack }: PomodoroAppProps) => {
           <Button onClick={() => switchMode('break')} variant={mode === 'break' ? 'default' : 'outline'} size="sm">Break</Button>
         </div>
 
-        <div className="glass-card rounded-xl px-6 py-3 flex items-center gap-3">
+        <div className="card-ui rounded-xl px-6 py-3 flex items-center gap-3">
           <TimerIcon className="w-4 h-4 text-muted-foreground" />
           <span className="text-sm text-muted-foreground">Sessions completed:</span>
           <span className="text-lg font-bold">{sessions}</span>
@@ -111,7 +111,7 @@ export const PomodoroApp = ({ onBack }: PomodoroAppProps) => {
         </button>
 
         {editMode && (
-          <div className="glass-card rounded-xl p-4 space-y-3 w-full max-w-xs">
+          <div className="card-ui rounded-xl p-4 space-y-3 w-full max-w-xs">
             {(['focus', 'break', 'longBreak'] as const).map(key => (
               <div key={key} className="flex items-center justify-between">
                 <label className="text-sm capitalize">{key.replace('long', 'Long ')} (min)</label>

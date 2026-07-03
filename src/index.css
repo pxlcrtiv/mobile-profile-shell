@@ -1,120 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* iOS 26 Design System - Modern Glass Morphism */
-
 @layer base {
   :root {
-    /* Core Background System - Indigo Aurora */
-    --background: 230 30% 5%;
-    --foreground: 0 0% 98%;
+    --background: 240 15% 4%;
+    --foreground: 0 0% 96%;
 
-    /* Card System - Glass tinted */
-    --card: 235 30% 10%;
-    --card-foreground: 0 0% 95%;
+    --card: 240 12% 8%;
+    --card-foreground: 0 0% 96%;
 
-    /* Popover System */
-    --popover: 235 30% 9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 12% 8%;
+    --popover-foreground: 0 0% 96%;
 
-    /* Primary Brand Colors - Indigo Violet */
-    --primary: 250 89% 67%;
+    --primary: 260 84% 66%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 270 91% 65%;
+    --primary-glow: 260 85% 60%;
 
-    /* Secondary Colors */
-    --secondary: 235 25% 16%;
+    --secondary: 240 10% 14%;
     --secondary-foreground: 0 0% 90%;
 
-    /* Muted Colors */
-    --muted: 235 25% 13%;
-    --muted-foreground: 230 10% 55%;
+    --muted: 240 8% 16%;
+    --muted-foreground: 240 5% 50%;
 
-    /* Accent System - Teal-Cyan */
-    --accent: 174 72% 56%;
-    --accent-foreground: 235 30% 8%;
-    --accent-glow: 174 80% 65%;
+    --accent: 186 100% 50%;
+    --accent-foreground: 240 15% 4%;
+    --accent-glow: 186 100% 55%;
 
-    /* Status Colors */
-    --destructive: 0 85% 60%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --success: 142 72% 45%;
     --warning: 40 95% 55%;
 
-    /* Border & Input */
-    --border: 235 25% 18%;
-    --input: 235 25% 13%;
-    --ring: 250 89% 67%;
+    --border: 240 8% 16%;
+    --input: 240 8% 16%;
+    --ring: 260 84% 66%;
 
-    /* iOS 26 Specific - Indigo Tinted */
-    --app-background: 230 30% 7%;
-    --status-bar: 230 30% 3%;
-    --dock-background: 230 30% 6%;
-    --glass-effect: 235 30% 14%;
-    --ios-blue: 230 90% 60%;
-    --ios-red: 0 85% 55%;
+    --app-background: 240 15% 3%;
+    --status-bar: 240 15% 3%;
+    --dock-background: 240 10% 6%;
+    --glass-effect: 240 10% 10%;
+
+    --ios-blue: 260 84% 66%;
+    --ios-red: 0 84% 60%;
     --ios-green: 142 72% 45%;
     --ios-orange: 28 100% 50%;
-    --ios-purple: 270 91% 65%;
+    --ios-purple: 260 84% 66%;
     --ios-pink: 322 100% 65%;
     --ios-yellow: 48 100% 50%;
-    --ios-teal: 174 72% 56%;
+    --ios-teal: 186 100% 50%;
 
-    /* Gradients - Aurora Palette */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
-    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(235 30% 3%));
-    --gradient-glass: linear-gradient(135deg, hsl(var(--glass-effect) / 0.6), hsl(var(--glass-effect) / 0.2));
+    --gradient-primary: linear-gradient(135deg, hsl(260 84% 66%), hsl(280 80% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(186 100% 50%), hsl(160 100% 40%));
+    --gradient-background: linear-gradient(180deg, hsl(240 15% 4%), hsl(240 15% 2%));
+    --gradient-card: linear-gradient(135deg, hsl(240 10% 10% / 0.8), hsl(240 10% 6% / 0.4));
 
-    /* Shadows - Indigo Glow */
-    --shadow-app: 0 10px 30px hsl(var(--primary) / 0.25);
-    --shadow-glass: 0 8px 32px hsl(230 30% 2% / 0.6);
-    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.35);
+    --shadow-app: 0 8px 32px hsl(260 84% 66% / 0.15);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 30px hsl(260 84% 66% / 0.3);
 
-    /* Animations */
-    --spring-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
     --smooth-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 1.25rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  /* Light mode (mobile OS portfolio defaults to dark) */
-  .light {
-    --background: 0 0% 100%;
-    --foreground: 240 8% 8%;
-    --card: 0 0% 98%;
-    --card-foreground: 240 8% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 8% 8%;
-    --primary: 270 95% 55%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 95%;
-    --secondary-foreground: 240 8% 8%;
-    --muted: 240 5% 92%;
-    --muted-foreground: 240 5% 45%;
-    --accent: 200 100% 50%;
-    --accent-foreground: 0 0% 100%;
-    --border: 240 5% 88%;
-    --input: 240 5% 92%;
-    --ring: 270 95% 55%;
-    --app-background: 0 0% 98%;
-    --status-bar: 0 0% 95%;
-    --dock-background: 0 0% 100%;
-    --glass-effect: 0 0% 95%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
@@ -122,278 +74,99 @@
   body {
     @apply bg-background text-foreground;
     background: var(--gradient-background);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* iOS 26 App Icon Styles */
-  .app-icon {
-    @apply relative flex items-center justify-center transition-all duration-300;
-    border-radius: 22px;
-    background: var(--gradient-glass);
-    backdrop-filter: blur(30px);
-    border: 1px solid hsl(var(--border) / 0.1);
-    box-shadow: 0 4px 20px hsl(var(--background) / 0.8), 
-                0 0 0 1px hsl(var(--foreground) / 0.05);
+  .app-icon-shell {
+    @apply relative flex items-center justify-center transition-all duration-200;
+    border-radius: 18px;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 16px hsl(0 0% 0% / 0.3);
   }
 
-  .app-icon:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-glow);
+  .app-icon-shell:active {
+    transform: scale(0.88);
   }
 
-  .app-icon:active {
-    transform: scale(0.95);
-  }
-
-  /* iOS-style minimal status bar that doesn't interfere with Dynamic Island */
-  /* iOS-style minimal status bar that matches iOS 26 design */
   .status-bar {
     @apply fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-5 h-8;
     background: transparent;
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid hsl(var(--border) / 0.1);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid hsl(var(--border) / 0.15);
     color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
   }
 
   .app-grid {
-    @apply grid grid-cols-4 gap-4 p-6;
+    @apply grid grid-cols-4 gap-5;
   }
 
-  /* iOS 26 Control Center */
-  .control-center {
-    @apply fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-xl;
-    border-top: 1px solid hsl(var(--border) / 0.2);
-    padding: 20px;
-    border-radius: 20px 20px 0 0;
-    transform: translateY(100%);
-    transition: transform 0.3s var(--spring-bounce);
+  .game-grid {
+    @apply grid grid-cols-4 gap-4;
   }
 
-  .control-center.open {
-    transform: translateY(0);
-  }
-
-  /* Dynamic Island - iOS 26 style with better visibility */
   .dynamic-island {
-    @apply fixed top-2 left-1/2 transform -translate-x-1/2 bg-foreground/10 backdrop-blur-xl;
+    @apply fixed top-2 left-1/2 -translate-x-1/2 z-30;
     border-radius: 20px;
-    padding: 8px 16px;
-    min-width: 132px;
-    height: 36px;
+    padding: 6px 14px;
+    min-width: 120px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: hsl(240 10% 12% / 0.7);
+    backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--border) / 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
-  /* Animations */
-  @keyframes app-launch {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(20);
-      opacity: 0;
-    }
+  .card-ui {
+    background: hsl(var(--card));
+    border-radius: 16px;
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: var(--shadow-card);
   }
 
-  @keyframes slide-up {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  .card-ui:hover {
+    border-color: hsl(var(--border) / 0.8);
   }
 
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0.3);
-      opacity: 0;
-    }
-    50% {
-      transform: scale(1.05);
-    }
-    70% {
-      transform: scale(0.9);
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+  .tab-bar {
+    background: hsl(240 10% 6% / 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.3);
+    box-shadow: 0 -4px 24px hsl(0 0% 0% / 0.3);
   }
+}
 
-  @keyframes fade-in-up {
-    from {
-      transform: translateY(16px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+@layer utilities {
+  @keyframes fade-up {
+    from { transform: translateY(12px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
 
   @keyframes scale-in {
-    from {
-      transform: scale(0.92);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
   }
 
   @keyframes glow-pulse {
-    0%, 100% {
-      box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
-    }
-    50% {
-      box-shadow: 0 0 40px hsl(var(--primary) / 0.4);
-    }
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.15); }
+    50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.3); }
   }
 
-  @keyframes shimmer {
-    0% {
-      background-position: -200% center;
-    }
-    100% {
-      background-position: 200% center;
-    }
+  @keyframes slide-up {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
 
-  @keyframes aurora-drift {
-    0% {
-      transform: translate(0, 0) scale(1);
-      opacity: 0.3;
-    }
-    50% {
-      opacity: 0.5;
-    }
-    100% {
-      transform: translate(60px, -40px) scale(1.2);
-      opacity: 0.4;
-    }
-  }
-
-  @keyframes aurora-shift {
-    0%, 100% {
-      opacity: 0.7;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes dock-glow {
-    0%, 100% {
-      box-shadow: 0 4px 20px hsl(var(--primary) / 0.1);
-    }
-    50% {
-      box-shadow: 0 4px 30px hsl(var(--primary) / 0.25);
-    }
-  }
-
-  @keyframes status-shimmer {
-    0% {
-      opacity: 0.6;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0.6;
-    }
-  }
-
-  .app-launch {
-    animation: app-launch 0.6s var(--spring-bounce) forwards;
-  }
-
-  .slide-up {
-    animation: slide-up 0.4s var(--smooth-ease) forwards;
-  }
-
-  .bounce-in {
-    animation: bounce-in 0.6s var(--spring-bounce) forwards;
-  }
-
-  /* Aurora Wallpaper - Animated Gradient Background */
-  .aurora-wallpaper {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    background: hsl(230 30% 5%);
-  }
-
-  .aurora-wallpaper::before,
-  .aurora-wallpaper::after,
-  .aurora-wallpaper .aurora-blob-3 {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.4;
-    animation: aurora-drift 12s ease-in-out infinite alternate;
-    will-change: transform, opacity;
-  }
-
-  .aurora-wallpaper::before {
-    background: radial-gradient(circle, hsl(250 89% 67% / 0.5), transparent 70%);
-    top: -10%;
-    left: -10%;
-    animation-delay: 0s;
-  }
-
-  .aurora-wallpaper::after {
-    background: radial-gradient(circle, hsl(174 72% 56% / 0.4), transparent 70%);
-    bottom: -15%;
-    right: -10%;
-    animation-delay: -4s;
-  }
-
-  .aurora-wallpaper .aurora-blob-3 {
-    background: radial-gradient(circle, hsl(270 91% 65% / 0.35), transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation-delay: -8s;
-  }
-
-  /* Glass Card Utility */
-  .glass-card {
-    background: hsl(var(--card) / 0.5);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid hsl(var(--foreground) / 0.08);
-    box-shadow: 0 8px 32px hsl(230 30% 2% / 0.5);
-  }
-
-  .tab-content {
-  opacity: 0;
-  animation: fade-in-up 0.35s var(--smooth-ease) forwards;
-}
-
-.glass-card-strong {
-    background: hsl(var(--card) / 0.7);
-    backdrop-filter: blur(30px) saturate(1.4);
-    -webkit-backdrop-filter: blur(30px) saturate(1.4);
-    border: 1px solid hsl(var(--foreground) / 0.12);
-    box-shadow: 0 8px 32px hsl(230 30% 2% / 0.6);
-  }
+  .animate-fade-up { animation: fade-up 0.4s var(--smooth-ease) forwards; }
+  .animate-scale-in { animation: scale-in 0.35s var(--smooth-ease) forwards; }
+  .animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+  .animate-slide-up { animation: slide-up 0.35s var(--smooth-ease) forwards; }
+  .animate-stagger > * { opacity: 0; animation: fade-up 0.4s var(--smooth-ease) forwards; }
 }

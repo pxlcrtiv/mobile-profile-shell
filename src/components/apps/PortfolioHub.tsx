@@ -25,7 +25,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
     <MobileScreen title="Portfolio" onBack={onBack}>
       <div className="space-y-6 pb-12">
         {/* Profile Header */}
-        <div className="glass-card rounded-2xl p-6 text-center space-y-4">
+        <div className="card-ui rounded-2xl p-6 text-center space-y-4">
           <div className="relative inline-flex">
             <div className="absolute inset-0 rounded-full bg-gradient-primary blur-xl opacity-50 animate-pulse" />
             <img
@@ -61,7 +61,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
         </div>
 
         {/* GitHub Stats */}
-        <div className="glass-card rounded-2xl p-5 space-y-4">
+        <div className="card-ui rounded-2xl p-5 space-y-4">
           <h3 className="font-semibold flex items-center gap-2"><Github className="w-4 h-4" />GitHub Activity</h3>
           <div className="h-40">
             <ResponsiveContainer width="100%" height="100%">
@@ -84,7 +84,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
         </div>
 
         {/* Top Skills */}
-        <div className="glass-card rounded-2xl p-5 space-y-3">
+        <div className="card-ui rounded-2xl p-5 space-y-3">
           <h3 className="font-semibold flex items-center gap-2"><Code className="w-4 h-4" />Top Skills</h3>
           <div className="space-y-2">
             {topLanguages.map(([lang, level]) => (
@@ -101,12 +101,12 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
         </div>
 
         {/* Top Repositories */}
-        <div className="glass-card rounded-2xl p-5 space-y-3">
+        <div className="card-ui rounded-2xl p-5 space-y-3">
           <h3 className="font-semibold flex items-center gap-2"><GitFork className="w-4 h-4" />Featured Repos</h3>
           <div className="space-y-3">
             {topRepos.map(repo => (
               <a key={repo.id} href={repo.html_url} target="_blank" rel="noopener noreferrer"
-                className="block glass-card rounded-xl p-4 hover:bg-secondary/50 transition-all duration-200">
+                className="block card-ui rounded-xl p-4 hover:bg-secondary/50 transition-all duration-200">
                 <div className="flex items-start justify-between">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">

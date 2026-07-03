@@ -10,18 +10,18 @@ interface GameEntry {
 }
 
 const gameList: GameEntry[] = [
-  { id: 'snake', label: 'Snake', icon: Gamepad2, color: 'bg-gradient-to-br from-green-400 via-emerald-500 to-green-600' },
-  { id: 'tictactoe', label: 'Tic Tac Toe', icon: Grid3X3, color: 'bg-gradient-to-br from-indigo-400 via-indigo-500 to-purple-600' },
-  { id: 'tetris', label: 'Tetris', icon: Pyramid, color: 'bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600' },
-  { id: 'memory', label: 'Memory', icon: Shapes, color: 'bg-gradient-to-br from-pink-400 via-rose-500 to-pink-600' },
-  { id: 'flappy', label: 'Flappy Bird', icon: Bird, color: 'bg-gradient-to-br from-sky-400 via-blue-500 to-cyan-600' },
-  { id: 'game2048', label: '2048', icon: Grid3X3, color: 'bg-gradient-to-br from-amber-400 via-orange-500 to-red-600' },
-  { id: 'sudoku', label: 'Sudoku', icon: Puzzle, color: 'bg-gradient-to-br from-teal-400 via-cyan-500 to-blue-600' },
-  { id: 'pong', label: 'Pong', icon: Swords, color: 'bg-gradient-to-br from-violet-400 via-purple-500 to-fuchsia-600' },
-  { id: 'spaceship', label: 'Space Shooter', icon: Rocket, color: 'bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-800' },
-  { id: 'pimenta', label: 'Pimenta', icon: Flame, color: 'bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500' },
-  { id: 'crownfall', label: 'Crownfall', icon: ShieldCheck, color: 'bg-gradient-to-br from-amber-600 via-yellow-600 to-amber-800' },
-  { id: 'slidingpuzzle', label: 'Sliding Puzzle', icon: Puzzle, color: 'bg-gradient-to-br from-teal-400 via-emerald-500 to-green-600' },
+  { id: 'snake', label: 'Snake', icon: Gamepad2, color: 'bg-gradient-to-br from-green-500 to-emerald-700' },
+  { id: 'tictactoe', label: 'Tic Tac Toe', icon: Grid3X3, color: 'bg-gradient-to-br from-indigo-500 to-purple-700' },
+  { id: 'tetris', label: 'Tetris', icon: Pyramid, color: 'bg-gradient-to-br from-cyan-500 to-blue-700' },
+  { id: 'memory', label: 'Memory', icon: Shapes, color: 'bg-gradient-to-br from-pink-500 to-rose-700' },
+  { id: 'flappy', label: 'Flappy Bird', icon: Bird, color: 'bg-gradient-to-br from-sky-500 to-cyan-700' },
+  { id: 'game2048', label: '2048', icon: Grid3X3, color: 'bg-gradient-to-br from-amber-500 to-orange-700' },
+  { id: 'sudoku', label: 'Sudoku', icon: Puzzle, color: 'bg-gradient-to-br from-teal-500 to-cyan-700' },
+  { id: 'pong', label: 'Pong', icon: Swords, color: 'bg-gradient-to-br from-violet-500 to-fuchsia-700' },
+  { id: 'spaceship', label: 'Space Shooter', icon: Rocket, color: 'bg-gradient-to-br from-blue-600 to-indigo-800' },
+  { id: 'pimenta', label: 'Pimenta', icon: Flame, color: 'bg-gradient-to-br from-red-600 to-orange-600' },
+  { id: 'crownfall', label: 'Crownfall', icon: ShieldCheck, color: 'bg-gradient-to-br from-amber-600 to-yellow-700' },
+  { id: 'slidingpuzzle', label: 'Sliding Puzzle', icon: Puzzle, color: 'bg-gradient-to-br from-emerald-500 to-teal-700' },
 ];
 
 interface GamesHubProps {
@@ -32,35 +32,34 @@ export const GamesHub = ({ onLaunchGame }: GamesHubProps) => {
   const { getHighScore } = useHighScores();
 
   return (
-    <div className="pt-12 min-h-screen">
-      <div className="text-center py-6 px-6">
-        <div className="relative inline-flex mb-3 bounce-in">
-          <div className="absolute inset-0 rounded-full bg-gradient-primary blur-xl opacity-60 animate-pulse" />
-          <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-primary ring-2 ring-white/20">
-            <Gamepad2 className="w-8 h-8 text-white" />
+    <div className="pt-10 min-h-screen">
+      <div className="px-5 py-5">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center shadow-lg shadow-purple-500/20">
+            <Gamepad2 className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h1 className="text-lg font-bold font-display tracking-tight">Game Center</h1>
+            <p className="text-[10px] text-muted-foreground">Choose your game</p>
           </div>
         </div>
-        <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
-          Game Center
-        </h1>
       </div>
 
-      <div className="px-6 pb-24">
-        <div className="app-grid max-w-sm mx-auto">
+      <div className="px-5 pb-28">
+        <div className="game-grid max-w-sm mx-auto">
           {gameList.map((game, index) => {
-            const Icon = game.icon;
             const highScore = getHighScore(game.id);
             return (
-              <div key={game.id} className="bounce-in" style={{ animationDelay: `${index * 80}ms` }}>
+              <div key={game.id} className="animate-fade-up" style={{ animationDelay: `${index * 50}ms` }}>
                 <div className="relative" onClick={() => onLaunchGame(game.id)}>
                   <AppIcon
-                    icon={Icon}
+                    icon={game.icon}
                     label={game.label}
                     color={game.color}
                     onClick={() => {}}
                   />
                   {highScore > 0 && (
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-amber-500/90 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap">
+                    <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 bg-amber-500/90 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap leading-none">
                       {highScore}
                     </div>
                   )}

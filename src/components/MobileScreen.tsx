@@ -12,27 +12,25 @@ interface MobileScreenProps {
 
 export const MobileScreen = ({ children, title, onBack, className }: MobileScreenProps) => {
   return (
-    <div className={cn("fixed inset-0 bg-app-background aurora-wallpaper slide-up flex flex-col", className)}>
-      <div className="aurora-blob-3"></div>
+    <div className={cn("fixed inset-0 bg-background animate-slide-up flex flex-col", className)}>
       <StatusBar />
       
       {title && (
-        <div className="flex items-center justify-between px-6 py-4 mt-12 border-b border-border/20">
-          {onBack && (
+        <div className="flex items-center justify-between px-5 py-3 mt-8 border-b border-border/20">
+          {onBack ? (
             <button 
               onClick={onBack}
-              className="flex items-center justify-center w-8 h-8 rounded-full glass-card hover:bg-secondary/70 transition-all duration-200 active:scale-90"
+              className="flex items-center justify-center w-8 h-8 rounded-lg bg-secondary/50 hover:bg-secondary transition-all duration-150 active:scale-90"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
-          )}
-          <h1 className="text-lg font-semibold text-center flex-1">{title}</h1>
-          {onBack && <div className="w-8" />}
+          ) : <div className="w-8" />}
+          <h1 className="text-base font-semibold text-center flex-1">{title}</h1>
+          <div className="w-8" />
         </div>
       )}
       
-      {/* Make content area fully scrollable with proper padding */}
-      <div className="flex-1 overflow-y-auto p-6 pb-20">
+      <div className="flex-1 overflow-y-auto p-5 pb-24">
         {children}
       </div>
     </div>

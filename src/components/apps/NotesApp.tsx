@@ -69,7 +69,7 @@ export const NotesApp = ({ onBack }: NotesAppProps) => {
           </div>
         ) : (
           notes.map(note => (
-            <div key={note.id} onClick={() => startEdit(note)} className="glass-card rounded-xl p-4 cursor-pointer hover:bg-secondary/40 transition-all duration-200 active:scale-[0.98]">
+            <div key={note.id} onClick={() => startEdit(note)} className="card-ui rounded-xl p-4 cursor-pointer hover:bg-secondary/40 transition-all duration-200 active:scale-[0.98]">
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
                   <h3 className="font-medium truncate">{note.title || 'Untitled'}</h3>

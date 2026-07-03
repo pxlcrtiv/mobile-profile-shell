@@ -188,7 +188,7 @@ export const MessagesApp = ({ onBack }: MessagesAppProps) => {
     selectedChat ? (
       <div className="flex flex-col h-full">
         {/* Chat Header */}
-        <div className="sticky top-0 z-10 glass-card border-b border-border p-4 flex items-center justify-between">
+        <div className="sticky top-0 z-10 card-ui border-b border-border p-4 flex items-center justify-between">
           <div className="flex items-center space-x-3" onClick={() => setIsInChat(false)}>
             {isInChat && <ArrowRight className="h-4 w-4 rotate-180" />}
             <div className="relative">
@@ -261,7 +261,7 @@ export const MessagesApp = ({ onBack }: MessagesAppProps) => {
         </div>
 
         {/* Message Input */}
-        <div className="p-4 border-t border-border glass-card">
+        <div className="p-4 border-t border-border card-ui">
           <div className="flex items-center space-x-2">
             <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full">
               <Paperclip className="h-4 w-4" />

@@ -46,7 +46,7 @@ export const SettingsApp = ({ onBack }: SettingsAppProps) => {
     hasChevron?: boolean;
   }) => (
     <div 
-      className="flex items-center p-4 glass-card rounded-xl mb-3 cursor-pointer hover:bg-secondary/30 transition-colors"
+      className="flex items-center p-4 card-ui rounded-xl mb-3 cursor-pointer hover:bg-secondary/30 transition-colors"
       onClick={hasToggle ? onToggle : undefined}
     >
       <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
@@ -157,7 +157,7 @@ export const SettingsApp = ({ onBack }: SettingsAppProps) => {
         />
 
         {/* System Info */}
-        <div className="mt-8 p-4 glass-card rounded-xl">
+        <div className="mt-8 p-4 card-ui rounded-xl">
           <div className="text-center text-sm text-muted-foreground">
             <div>iOS 26.0</div>
             <div className="mt-1">Model: iPhone Portfolio</div>

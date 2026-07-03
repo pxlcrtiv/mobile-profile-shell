@@ -26,22 +26,22 @@ import { MusicApp } from '@/components/apps/MusicApp';
 import { MessagesApp } from '@/components/apps/MessagesApp';
 import { NotesApp } from '@/components/apps/NotesApp';
 import { PomodoroApp } from '@/components/apps/PomodoroApp';
-import { Settings, Calculator, Clock, CloudSun, Camera, Music, MessageCircle, StickyNote, Timer } from 'lucide-react';
+import { Grid3X3, Settings, Calculator, Clock, CloudSun, Camera, Music, MessageCircle, StickyNote, Timer } from 'lucide-react';
 
 type AppType = 'home' | 'snake' | 'tictactoe' | 'tetris' | 'memory' | 'flappy' | 'game2048' | 'sudoku' | 'pong' |
   'spaceship' | 'pimenta' | 'crownfall' | 'slidingpuzzle' |
   'calculator' | 'clock' | 'weather' | 'settings' | 'qrcode' | 'music' | 'messages' | 'notes' | 'pomodoro';
 
 const utilities = [
-  { id: 'settings' as const, label: 'Settings', icon: Settings, color: 'bg-gradient-to-br from-gray-500 via-gray-600 to-gray-800' },
-  { id: 'calculator' as const, label: 'Calculator', icon: Calculator, color: 'bg-gradient-to-br from-zinc-600 via-zinc-700 to-zinc-900' },
-  { id: 'clock' as const, label: 'Clock', icon: Clock, color: 'bg-gradient-to-br from-zinc-800 via-zinc-900 to-black' },
-  { id: 'weather' as const, label: 'Weather', icon: CloudSun, color: 'bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600' },
-  { id: 'qrcode' as const, label: 'QR Code', icon: Camera, color: 'bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600' },
-  { id: 'music' as const, label: 'Music', icon: Music, color: 'bg-gradient-to-br from-pink-400 via-pink-500 to-rose-600' },
-  { id: 'messages' as const, label: 'Messages', icon: MessageCircle, color: 'bg-gradient-to-br from-green-400 via-emerald-500 to-green-700' },
-  { id: 'notes' as const, label: 'Notes', icon: StickyNote, color: 'bg-gradient-to-br from-amber-400 via-amber-500 to-yellow-600' },
-  { id: 'pomodoro' as const, label: 'Pomodoro', icon: Timer, color: 'bg-gradient-to-br from-red-400 via-red-500 to-rose-600' },
+  { id: 'settings' as const, label: 'Settings', icon: Settings, color: 'bg-gradient-to-br from-gray-600 to-gray-800' },
+  { id: 'calculator' as const, label: 'Calculator', icon: Calculator, color: 'bg-gradient-to-br from-zinc-600 to-zinc-900' },
+  { id: 'clock' as const, label: 'Clock', icon: Clock, color: 'bg-gradient-to-br from-zinc-700 to-black' },
+  { id: 'weather' as const, label: 'Weather', icon: CloudSun, color: 'bg-gradient-to-br from-sky-500 to-indigo-700' },
+  { id: 'qrcode' as const, label: 'QR Code', icon: Camera, color: 'bg-gradient-to-br from-blue-500 to-purple-700' },
+  { id: 'music' as const, label: 'Music', icon: Music, color: 'bg-gradient-to-br from-pink-500 to-rose-700' },
+  { id: 'messages' as const, label: 'Messages', icon: MessageCircle, color: 'bg-gradient-to-br from-green-500 to-emerald-700' },
+  { id: 'notes' as const, label: 'Notes', icon: StickyNote, color: 'bg-gradient-to-br from-amber-500 to-yellow-700' },
+  { id: 'pomodoro' as const, label: 'Pomodoro', icon: Timer, color: 'bg-gradient-to-br from-red-500 to-rose-700' },
 ];
 
 const Index = () => {
@@ -80,12 +80,11 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background aurora-wallpaper relative overflow-hidden">
-      <div className="aurora-blob-3"></div>
+    <div className="min-h-screen bg-background relative">
       <StatusBar />
       <DynamicIsland />
 
-      <div className="tab-content">
+      <div className="animate-fade-up">
         {activeTab === 'portfolio' && (
           <PortfolioHub onBack={() => setActiveTab('games')} />
         )}
@@ -93,37 +92,29 @@ const Index = () => {
           <GamesHub onLaunchGame={(id) => setCurrentApp(id as AppType)} />
         )}
         {activeTab === 'utilities' && (
-        <div className="pt-20 pb-24 min-h-screen flex flex-col">
-          <div className="text-center py-6 px-6">
-            <div className="relative inline-flex mb-3 bounce-in">
-              <div className="absolute inset-0 rounded-full bg-gradient-primary blur-xl opacity-60 animate-pulse" />
-              <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-primary ring-2 ring-white/20">
-                <Settings className="w-8 h-8 text-white" />
+          <div className="pt-10 min-h-screen">
+            <div className="px-5 py-5">
+              <div className="flex items-center gap-3 mb-1">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center shadow-lg shadow-gray-500/20">
+                  <Grid3X3 className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-lg font-bold font-display tracking-tight">Utilities</h1>
+                  <p className="text-[10px] text-muted-foreground">Tools & apps</p>
+                </div>
               </div>
             </div>
-            <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
-              Utilities
-            </h1>
-          </div>
 
-          <div className="flex-1 px-6">
-            <div className="app-grid max-w-sm mx-auto">
-              {utilities.map((app, index) => {
-                const Icon = app.icon;
-                return (
-                  <div key={app.id} className="bounce-in" style={{ animationDelay: `${index * 80}ms` }}>
-                    <AppIcon
-                      icon={Icon}
-                      label={app.label}
-                      color={app.color}
-                      onClick={() => setCurrentApp(app.id)}
-                    />
+            <div className="px-5 pb-28">
+              <div className="game-grid max-w-sm mx-auto">
+                {utilities.map((app, index) => (
+                  <div key={app.id} className="animate-fade-up" style={{ animationDelay: `${index * 50}ms` }}>
+                    <AppIcon icon={app.icon} label={app.label} color={app.color} onClick={() => setCurrentApp(app.id)} />
                   </div>
-                );
-              })}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
         )}
       </div>
 
