@@ -1,17 +1,26 @@
 import { MobileScreen } from '@/components/MobileScreen';
-import { useGitHubUser, useGitHubRepos, generateContributionData, calculateSkillLevels, formatDate } from '@/lib/github-utils';
-import { User, MapPin, Calendar, Link as LinkIcon, Twitter, Users, GitFork, Star, Code, ExternalLink, Github } from 'lucide-react';
+import { useGitHubUser, useGitHubRepos, useGitHubActivity, generateContributionData, calculateSkillLevels, formatDate, formatDateRelative } from '@/lib/github-utils';
+import { User, MapPin, Calendar, Link as LinkIcon, Twitter, Users, GitFork, Star, Code, ExternalLink, Github, GitCommitHorizontal, GitPullRequest, CircleDot, MessageSquare } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
 interface PortfolioHubProps {
   onBack: () => void;
 }
 
-const CONTRIBUTION_COLORS = ['#6366f1', '#8b5cf6', '#a78bfa', '#c4b5fd', '#ddd6fe'];
+const CONTRIBUTION_COLORS = ['#00873C', '#0a9c47', '#27b85c', '#5fd089', '#9fe3bd'];
+
+const ACTIVITY_ICON: Record<string, typeof GitCommitHorizontal> = {
+  push: GitCommitHorizontal,
+  pull_request: GitPullRequest,
+  issue: MessageSquare,
+  star: Star,
+  fork: GitFork,
+};
 
 export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
   const { data: user, isLoading: userLoading } = useGitHubUser();
   const { data: repos, isLoading: reposLoading } = useGitHubRepos();
+  const { data: activity } = useGitHubActivity();
   const contributionData = generateContributionData();
   const skillLevels = repos ? calculateSkillLevels(repos) : {};
   const sortedSkills = Object.entries(skillLevels).sort(([, a], [, b]) => b - a);
@@ -20,6 +29,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
   const totalStars = publicRepos.reduce((sum, r) => sum + r.stargazers_count, 0);
   const topLanguages = sortedSkills.slice(0, 5);
   const topRepos = [...publicRepos].sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6);
+  const handle = user?.login || 'pxlcrtiv';
 
   return (
     <MobileScreen title="Portfolio" onBack={onBack}>
@@ -27,7 +37,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
         {/* Profile Header */}
         <div className="card-ui rounded-2xl p-6 text-center space-y-4">
           <div className="relative inline-flex">
-            <div className="absolute inset-0 rounded-full bg-gradient-primary blur-xl opacity-50 animate-pulse" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[hsl(var(--coloros-green))] to-[hsl(var(--coloros-blue))] blur-xl opacity-50 animate-pulse" />
             <img
               src={user?.avatar_url || 'https://avatars.githubusercontent.com/u/12345678?v=4'}
               alt={user?.name || 'Profile'}
@@ -36,7 +46,15 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
           </div>
           <div>
             <h2 className="text-xl font-bold">{user?.name || 'Iheoma Nkwo'}</h2>
-            <p className="text-sm text-muted-foreground mt-1">{user?.bio || ''}</p>
+            <a
+              href={`https://github.com/${handle}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline mt-0.5"
+            >
+              <Github className="w-3.5 h-3.5" />@{handle}
+            </a>
+            <p className="text-sm text-muted-foreground mt-2">{user?.bio || ''}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-3 text-xs text-muted-foreground">
             {user?.location && (
@@ -62,7 +80,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
 
         {/* GitHub Stats */}
         <div className="card-ui rounded-2xl p-5 space-y-4">
-          <h3 className="font-semibold flex items-center gap-2"><Github className="w-4 h-4" />GitHub Activity</h3>
+          <h3 className="font-semibold flex items-center gap-2"><Github className="w-4 h-4 text-primary" />GitHub Activity</h3>
           <div className="h-40">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={contributionData}>
@@ -83,9 +101,38 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
           </div>
         </div>
 
+        {/* Recent Activity Feed */}
+        {activity && activity.length > 0 && (
+          <div className="card-ui rounded-2xl p-5 space-y-3">
+            <h3 className="font-semibold flex items-center gap-2"><GitCommitHorizontal className="w-4 h-4 text-primary" />Recent · @{handle}</h3>
+            <div className="space-y-2.5">
+              {activity.slice(0, 6).map(item => {
+                const Icon = ACTIVITY_ICON[item.type] || CircleDot;
+                return (
+                  <a
+                    key={item.id}
+                    href={item.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-xl p-2.5 hover:bg-secondary/40 transition-all duration-200"
+                  >
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/15 text-primary shrink-0">
+                      <Icon className="w-4 h-4" />
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs truncate">{item.description}</p>
+                      <p className="text-[10px] text-muted-foreground truncate">{item.repoName} · {formatDateRelative(item.createdAt)}</p>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Top Skills */}
         <div className="card-ui rounded-2xl p-5 space-y-3">
-          <h3 className="font-semibold flex items-center gap-2"><Code className="w-4 h-4" />Top Skills</h3>
+          <h3 className="font-semibold flex items-center gap-2"><Code className="w-4 h-4 text-primary" />Top Skills</h3>
           <div className="space-y-2">
             {topLanguages.map(([lang, level]) => (
               <div key={lang}>
@@ -93,7 +140,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
                   <span>{lang}</span><span className="text-muted-foreground">{level}%</span>
                 </div>
                 <div className="h-2 rounded-full bg-secondary overflow-hidden">
-                  <div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-500" style={{ width: `${level}%` }} />
+                  <div className="h-full rounded-full bg-gradient-to-r from-[hsl(var(--coloros-green))] to-[hsl(var(--coloros-blue))] transition-all duration-500" style={{ width: `${level}%` }} />
                 </div>
               </div>
             ))}
@@ -102,7 +149,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
 
         {/* Top Repositories */}
         <div className="card-ui rounded-2xl p-5 space-y-3">
-          <h3 className="font-semibold flex items-center gap-2"><GitFork className="w-4 h-4" />Featured Repos</h3>
+          <h3 className="font-semibold flex items-center gap-2"><GitFork className="w-4 h-4 text-primary" />Featured Repos</h3>
           <div className="space-y-3">
             {topRepos.map(repo => (
               <a key={repo.id} href={repo.html_url} target="_blank" rel="noopener noreferrer"
@@ -117,7 +164,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
                     <div className="flex items-center gap-3 mt-2 text-[10px] text-muted-foreground">
                       {repo.language && (
                         <span className="flex items-center gap-1">
-                          <span className="w-2 h-2 rounded-full bg-aurora-indigo" />
+                          <span className="w-2 h-2 rounded-full bg-primary" />
                           {repo.language}
                         </span>
                       )}

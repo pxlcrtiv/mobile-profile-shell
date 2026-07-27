@@ -29,22 +29,21 @@ export const StatusBar = () => {
   };
 
   return (
-    // Update status bar styling to match iOS 26 - increase height, add blur, improve positioning
-    <div className="status-bar fixed top-0 left-0 right-0 h-8 bg-transparent z-20 flex items-center justify-between px-5">
-      <div className="flex items-center space-x-1 text-sm font-medium text-white">
-        <span>{formatTime(currentTime)}</span>
+    <div className="status-bar" role="status" aria-live="polite">
+      <div className="flex items-center space-x-1.5 text-sm font-semibold text-white">
+        <span className="tabular-nums">{formatTime(currentTime)}</span>
       </div>
       
-      <div className="flex items-center space-x-3 text-white">
-        <Signal className="w-4 h-4" />
-        <Wifi className="w-4 h-4" />
+      <div className="flex items-center space-x-2.5 text-white">
+        <Signal className="w-4 h-4" aria-hidden="true" />
+        <Wifi className="w-4 h-4" aria-hidden="true" />
         <div className="flex items-center space-x-1">
           {charging ? (
-            <BatteryCharging className={`w-4 h-4 ${getBatteryColor()}`} />
+            <BatteryCharging className={`w-4 h-4 ${getBatteryColor()}`} aria-hidden="true" />
           ) : (
-            <Battery className={`w-4 h-4 ${getBatteryColor()}`} />
+            <Battery className={`w-4 h-4 ${getBatteryColor()}`} aria-hidden="true" />
           )}
-          <span className="text-xs font-medium">{batteryPercentage}%</span>
+          <span className="text-xs font-medium tabular-nums">{batteryPercentage}%</span>
         </div>
       </div>
     </div>

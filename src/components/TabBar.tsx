@@ -16,8 +16,8 @@ const tabs: { id: TabId; label: string; icon: LucideIcon }[] = [
 
 export const TabBar = ({ activeTab, onTabChange }: TabBarProps) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 px-3 pb-3 pt-1 bg-gradient-to-t from-background/80 to-transparent">
-      <div className="max-w-sm mx-auto tab-bar rounded-2xl px-2 py-1 flex items-center justify-around">
+    <div className="fixed bottom-0 left-0 right-0 z-50 px-3 pb-safe pt-1 bg-gradient-to-t from-background/80 to-transparent">
+      <div className="max-w-sm mx-auto tab-bar rounded-2xl px-2 py-1.5 flex items-center justify-around">
         {tabs.map(tab => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -26,14 +26,17 @@ export const TabBar = ({ activeTab, onTabChange }: TabBarProps) => {
               key={tab.id}
               onClick={() => onTabChange(tab.id)}
               className={cn(
-                "flex flex-col items-center gap-0.5 py-2 px-5 rounded-xl transition-all duration-200 relative",
-                isActive ? "text-white" : "text-muted-foreground hover:text-foreground/70"
+                "flex flex-col items-center justify-center gap-1 py-2.5 px-4 rounded-2xl transition-all duration-200 relative touch-target min-w-[72px] min-h-[48px]",
+                "press-scale press-opacity",
+                isActive ? "text-primary" : "text-muted-foreground hover:text-foreground/80"
               )}
+              aria-current={isActive ? 'page' : undefined}
+              aria-label={tab.label}
             >
               {isActive && (
-                <div className="absolute inset-0 rounded-xl bg-primary/15 animate-scale-in" />
+                <div className="absolute inset-0 rounded-2xl bg-primary/15 ring-1 ring-primary/30 animate-scale-in" aria-hidden="true" />
               )}
-              <Icon className={cn("w-5 h-5 relative z-10 transition-transform", isActive && "scale-110")} />
+              <Icon className={cn("w-5 h-5 relative z-10 transition-transform", isActive && "scale-110")} aria-hidden="true" />
               <span className="text-[9px] font-semibold relative z-10 tracking-tight">{tab.label}</span>
             </button>
           );

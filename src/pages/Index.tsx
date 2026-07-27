@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { StatusBar } from '@/components/StatusBar';
-import { DynamicIsland } from '@/components/DynamicIsland';
 import { AppIcon } from '@/components/AppIcon';
 import { TabBar, TabId } from '@/components/TabBar';
 import { GamesHub } from '@/components/GamesHub';
@@ -82,7 +81,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <StatusBar />
-      <DynamicIsland />
 
       <div className="animate-fade-up">
         {activeTab === 'portfolio' && (

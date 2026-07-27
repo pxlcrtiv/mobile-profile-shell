@@ -31,23 +31,27 @@ export const DynamicIsland = () => {
 
   // iOS-style status info that will always be visible
   const renderStatusInfo = () => (
-    <div className="absolute left-2 top-1 flex items-center space-x-1.5">
-        <Signal className="w-2.5 h-2.5 text-white/70" />
-        <Wifi className="w-2.5 h-2.5 text-white/70" />
-        {charging ? (
-           <BatteryCharging className={`w-2.5 h-2.5 ${getBatteryColor()}`} />
-         ) : (
-           <Battery className={`w-2.5 h-2.5 ${getBatteryColor()}`} />
-         )}
-      </div>
+    <div className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center space-x-1.5">
+      <Signal className="w-2.5 h-2.5 text-white/70" aria-hidden="true" />
+      <Wifi className="w-2.5 h-2.5 text-white/70" aria-hidden="true" />
+      {charging ? (
+         <BatteryCharging className={`w-2.5 h-2.5 ${getBatteryColor()}`} aria-hidden="true" />
+       ) : (
+         <Battery className={`w-2.5 h-2.5 ${getBatteryColor()}`} aria-hidden="true" />
+       )}
+    </div>
   );
 
   return (
     <div 
-      className={`dynamic-island cursor-pointer transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] z-10 hover:shadow-glass-hover ${ // Spring transition
+      className={`dynamic-island cursor-pointer z-10 ${
         isExpanded ? 'w-64 h-20' : 'w-36 h-9' 
       }`}
       onClick={() => setIsExpanded(!isExpanded)}
+      role="button"
+      aria-label={isExpanded ? 'Collapse Dynamic Island' : 'Expand Dynamic Island'}
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsExpanded(!isExpanded); } }}
     >
       {renderStatusInfo()}
       
