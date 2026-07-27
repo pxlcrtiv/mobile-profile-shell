@@ -12,7 +12,7 @@ interface MobileScreenProps {
 
 export const MobileScreen = ({ children, title, onBack, className }: MobileScreenProps) => {
   return (
-    <div className={cn("fixed inset-0 bg-background animate-slide-up flex flex-col", className)}>
+    <div className={cn("absolute inset-0 bg-background animate-slide-up flex flex-col z-10", className)}>
       <StatusBar />
       
       {title && (

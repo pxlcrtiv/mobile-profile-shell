@@ -82,7 +82,7 @@ const Index = () => {
     <div className="min-h-screen bg-background relative">
       <StatusBar />
 
-      <div className="animate-fade-up">
+      <div className={activeTab === 'portfolio' ? 'relative min-h-screen' : 'animate-fade-up'}>
         {activeTab === 'portfolio' && (
           <PortfolioHub onBack={() => setActiveTab('games')} />
         )}
