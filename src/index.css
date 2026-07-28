@@ -133,11 +133,11 @@
   }
 
   .app-grid {
-    @apply grid grid-cols-4 gap-5;
+    @apply grid grid-cols-4 gap-6;
   }
 
   .game-grid {
-    @apply grid grid-cols-4 gap-4;
+    @apply grid grid-cols-4 gap-5;
   }
 
   .dynamic-island {
