@@ -91,14 +91,14 @@ const Index = () => {
         )}
         {activeTab === 'utilities' && (
           <div className="pt-10 min-h-screen">
-            <div className="px-5 py-5">
+            <div className="px-5 py-4">
               <div className="flex items-center gap-3 mb-1">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center shadow-lg shadow-gray-500/20">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center shadow-lg shadow-gray-500/25">
                   <Grid3X3 className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h1 className="text-lg font-bold font-display tracking-tight">Utilities</h1>
-                  <p className="text-[10px] text-muted-foreground">Tools & apps</p>
+                  <p className="text-[11px] text-muted-foreground">Tools & apps</p>
                 </div>
               </div>
             </div>

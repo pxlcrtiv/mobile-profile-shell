@@ -36,7 +36,7 @@ export const GamesHub = ({ onLaunchGame }: GamesHubProps) => {
       <div className="px-5 py-4">
         <div className="flex items-center justify-between gap-3 mb-2">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[hsl(var(--coloros-green))] to-[hsl(var(--coloros-blue))] flex items-center justify-center shadow-lg shadow-primary/20">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[hsl(var(--coloros-green))] to-[hsl(var(--coloros-blue))] flex items-center justify-center shadow-lg shadow-primary/25">
               <Gamepad2 className="w-5 h-5 text-white" aria-hidden="true" />
             </div>
             <div>
@@ -61,7 +61,7 @@ export const GamesHub = ({ onLaunchGame }: GamesHubProps) => {
           {gameList.map((game, index) => {
             const highScore = getHighScore(game.id);
             return (
-              <div key={game.id} className="animate-fade-up" style={{ animationDelay: `${index * 50}ms` }}>
+              <div key={game.id} className="animate-fade-up" style={{ animationDelay: `${index * 40}ms` }}>
                 <AppIcon
                   icon={game.icon}
                   label={game.label}
