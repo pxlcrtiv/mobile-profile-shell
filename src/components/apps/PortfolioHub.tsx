@@ -121,13 +121,13 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
                     href={item.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 rounded-xl p-2 hover:bg-secondary/40 transition-all duration-200"
+                    className="flex items-center gap-2.5 rounded-xl p-2.5 hover:bg-secondary/50 transition-all duration-200 group"
                   >
-                    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 text-primary shrink-0">
+                    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 text-primary shrink-0 group-hover:bg-primary/20 transition-colors">
                       <Icon className="w-3.5 h-3.5" />
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[11px] truncate">{item.description}</p>
+                      <p className="text-[11px] truncate group-hover:text-foreground transition-colors">{item.description}</p>
                       <p className="text-[9px] text-muted-foreground truncate">{item.repoName} · {formatDateRelative(item.createdAt)}</p>
                     </div>
                   </a>
@@ -160,12 +160,12 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
           <div className="space-y-2">
             {topRepos.map(repo => (
               <a key={repo.id} href={repo.html_url} target="_blank" rel="noopener noreferrer"
-                className="block rounded-xl p-3 border border-border/30 hover:border-primary/30 hover:bg-secondary/30 transition-all duration-200">
+                className="block rounded-xl p-3 border border-border/30 hover:border-primary/40 hover:bg-secondary/40 transition-all duration-200 group">
                 <div className="flex items-start justify-between">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5">
                       <GitFork className="w-3 h-3 text-primary shrink-0" />
-                      <span className="font-medium text-xs truncate">{repo.name}</span>
+                      <span className="font-medium text-xs truncate group-hover:text-primary transition-colors">{repo.name}</span>
                     </div>
                     <p className="text-[10px] text-muted-foreground mt-0.5 line-clamp-2">{repo.description || 'No description'}</p>
                     <div className="flex items-center gap-2.5 mt-1.5 text-[9px] text-muted-foreground">
@@ -179,7 +179,7 @@ export const PortfolioHub = ({ onBack }: PortfolioHubProps) => {
                       <span className="flex items-center gap-0.5"><GitFork className="w-2.5 h-2.5" />{repo.forks_count}</span>
                     </div>
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground shrink-0 mt-0.5" />
+                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground shrink-0 mt-0.5 group-hover:text-primary transition-colors" />
                 </div>
               </a>
             ))}
