@@ -16,17 +16,17 @@ export const MobileScreen = ({ children, title, onBack, className }: MobileScree
       <StatusBar />
       
       {title && (
-        <div className="flex items-center justify-between px-5 py-3 mt-8 border-b border-border/20">
+        <div className="flex items-center justify-between px-5 py-3 mt-8 border-b border-border/15 bg-background/50 backdrop-blur-sm sticky top-8 z-20">
           {onBack ? (
             <button 
               onClick={onBack}
-              className="flex items-center justify-center w-8 h-8 rounded-lg bg-secondary/50 hover:bg-secondary transition-all duration-150 active:scale-90"
+              className="flex items-center justify-center w-9 h-9 rounded-xl bg-secondary/40 hover:bg-secondary/60 border border-border/20 transition-all duration-150 active:scale-90"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
-          ) : <div className="w-8" />}
-          <h1 className="text-base font-semibold text-center flex-1">{title}</h1>
-          <div className="w-8" />
+          ) : <div className="w-9" />}
+          <h1 className="text-[15px] font-semibold text-center flex-1 tracking-tight">{title}</h1>
+          <div className="w-9" />
         </div>
       )}
       
